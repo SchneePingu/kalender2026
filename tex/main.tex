@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 
-\usepackage{tikz, fontspec, xcolor, geometry, pgffor, intcalc, atbegshi, afterpage, rotating, pdfpages}
+\usepackage{tikz, fontspec, xcolor, geometry, pgffor, intcalc, atbegshi, afterpage, rotating, pdfpages, eso-pic}
 \geometry{
   paperwidth=303mm,
   paperheight=426mm,
@@ -177,6 +177,15 @@
 %\end{tikzpicture}
 \end{tikzpicture}
 }
+
+\newcommand{\CoverBackground}{%
+  \AddToShipoutPictureBG*{%
+    \AtPageLowerLeft{%
+      \color{CoverColor}\rule{\paperwidth}{\paperheight}%
+    }%
+  }%
+}
+
 
 % -- Calendar Commands --
 
@@ -474,8 +483,13 @@
 
 \begin{document}
 
-\includepdf[pages={1}]{Cover.pdf}
+\CoverBackground
+\includepdf[pages=1,pagecommand={\thispagestyle{empty}}]{Cover.pdf}
+\ClearShipoutPictureBG
 \drawCalendarYear
-\includepdf[pages={1}]{Outro.pdf}
+\newpage
+\CoverBackground
+\includepdf[pages=1,pagecommand={\thispagestyle{empty}}]{Outro.pdf}
+\ClearShipoutPictureBG
 
 \end{document}
