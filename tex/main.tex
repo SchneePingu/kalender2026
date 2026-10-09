@@ -13,7 +13,7 @@
 % -- Settings --
 \newcommand{\CalendarName}{}
 \newcommand{\isLeapYear}{\false}
-\newcommand{\DayNumberOfLastMondayOfDecemberOfLastYear}{29}
+\newcommand{\DayNumberOfLastMondayOfDecemberOfLastYear}{28}
 
 \newcommand{\JanuarHolidays}{1,6}
 \newcommand{\FebruarHolidays}{}
@@ -36,6 +36,7 @@
 \newcommand{\colorGruen}{6cbf6c}
 
 % -- Colors --
+\definecolor{CoverColor}{HTML}{50938a}
 \definecolor{WeekdayNameColor}{HTML}{525254}
 \definecolor{LineColor}{HTML}{5A5f7A}
 \definecolor{ActiveDayNumberColor}{HTML}{525254}
@@ -291,7 +292,7 @@
 
             \ifnum \arabic{Row} > \calculateValue{\NumberOfWeeks - 2}
 	        \ifnum \arabic{Column} = 0
-	            \setcounter{FirstDayNumber}{\activeDayNumber}
+	            \setcounter{FirstDayNumber}{\calculateValue{#1 + 1}}
 	        \fi
 	    \fi
 
